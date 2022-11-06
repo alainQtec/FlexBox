@@ -20,5 +20,16 @@ const routes = {
     Description: "This is the Contact Page",
   },
 };
+function handleUrlLocation() {
+  const location = window.location.pathname;
+  console.log("handleUrlLocation", location);
+}
+function urlRouter(e) {
+  const event = e || window.event;
+  event.preventDefault();
+  console.log("urlRouter", event.target);
+}
 
-console.log(routes);
+window.route = urlRouter;
+window.onpopstate = handleUrlLocation;
+handleUrlLocation();
