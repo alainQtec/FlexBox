@@ -1,0 +1,18 @@
+{
+  "name": "flexbox",
+  "version": "1.0.0",
+  "description": "Learning CSS FlexBox",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "echo \"run commands to start live-server here ...\"",
+    "dev": "echo \"run development commands here ...\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "flexbox"
+  ],
+  "author": "Alain Herve",
+  "license": "MIT"
+}
