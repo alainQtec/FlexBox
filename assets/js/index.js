@@ -1,4 +1,4 @@
-const routes = {
+const ROUTES = {
   404: {
     title: "404",
     template: "/views/404.html",
@@ -20,7 +20,7 @@ const routes = {
     Description: "This is the Contact Page",
   },
 };
-const content = document.querySelector(".content");
+const CONTENT = document.querySelector(".content");
 
 // EventListeners
 document.addEventListener("click", (event) => {
@@ -41,9 +41,9 @@ async function handleUrlLocation() {
   ) {
     location = "/";
   }
-  const route = routes[location] || routes[404];
+  const route = ROUTES[location] || ROUTES[404];
   const html = await fetch(route.template).then((res) => res.text());
-  content.innerHTML = html;
+  CONTENT.innerHTML = html;
 }
 
 window.route = (e = window.event) => {
