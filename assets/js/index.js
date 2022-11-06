@@ -20,6 +20,7 @@ const routes = {
     Description: "This is the Contact Page",
   },
 };
+const content = document.querySelector(".content");
 
 // EventListeners
 document.addEventListener("click", (event) => {
@@ -33,14 +34,16 @@ document.addEventListener("click", (event) => {
 // Functions
 async function handleUrlLocation() {
   let location = window.location.pathname;
-  if (location === "/index.html" || location.length == 0) {
+  if (
+    location === "/home" ||
+    location === "/index.html" ||
+    location.length == 0
+  ) {
     location = "/";
   }
-  console.log("handleUrlLocation", location);
   const route = routes[location] || routes[404];
-  console.log(route.template);
-  const html = await fetch(route.template).then((res) => res.text);
-  console.log(html);
+  const html = await fetch(route.template).then((res) => res.text());
+  content.innerHTML = html;
 }
 
 window.route = (e = window.event) => {
