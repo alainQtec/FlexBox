@@ -21,14 +21,12 @@ const ROUTES = {
   },
 };
 const CONTENT = document.querySelector(".content");
-
-// EventListeners
 document.addEventListener("click", (event) => {
   if (!event.target.matches("nav a")) {
     return;
   }
   event.preventDefault();
-  window.route(e);
+  window.route(event);
 });
 
 // Functions
@@ -42,14 +40,17 @@ async function handleUrlLocation() {
     location = "/";
   }
   const route = ROUTES[location] || ROUTES[404];
-  const html = await fetch(route.template).then((res) => res.text());
+  const html = await fetch(route.template)
+    .then((res) => res.text())
+    .catch((err) => {
+      console.error("Failed to fetch Template. reason:", err);
+    });
   CONTENT.innerHTML = html;
 }
 
 window.route = (e = window.event) => {
   e.preventDefault();
-  window.history.pushState({}, "", e.target.href);
   handleUrlLocation();
+  window.history.pushState({}, "", e.target.href);
 };
 window.onpopstate = handleUrlLocation;
-handleUrlLocation();
